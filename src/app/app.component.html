@@ -1,0 +1,71 @@
+<nav>
+  <img class="logo" [src]="logo" alt="logo pokemon">
+  <ul>
+    <li *ngFor="let link of links" [ngClass]="{'link__selecionado': link === 'Pokedex'}"> {{link}} </li>
+  </ul>
+  <img class="imgProfile" src={{imgProfile}} alt="Imagem do perfil">
+ </nav>
+   <h1>{{title}}</h1>
+   <div class="search">
+    <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="24"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" fill="#3764d3"/></svg>
+      <input [(ngModel)]="filterValue" class="inputPrincipal" type="text" placeholder="Pesquisar
+      por nome...">
+      <button class="btn__search">Search</button>
+   </div>
+ <main>
+  <form>
+    <select id="tipo" name="tipoPokemon">
+      <option value="agua">Tipo</option>
+      <option value="fogo">Fogo</option>
+      <option value="eletrico">Elétrico</option>
+      <option value="grama">Grama</option>
+      <option value="pedra">Pedra</option>
+    </select>
+    <select name="habilidades" id="habilidades">
+      <option value="habilidades">Habilidades</option>
+      <option value="Overgrow">Overgrow</option>
+      <option value="Blaze">Blaze</option>
+      <option value="Torrent">Torrent</option>
+    </select>
+    <div>
+      <h3>Altura:</h3>
+      <label>
+          <input type="checkbox" name="" id="pequeno" value="pequeno">Pequeno
+      </label>
+      <label >
+          <input type="checkbox" name="" id="pequeno" value="medio">Médio
+      </label>
+      <label>
+        <input type="checkbox" name="" id="pequeno" value="grande">Grande
+      </label>
+    </div>
+    <div>
+      <h3>Largura:</h3>
+      <label>
+        <input type="checkbox" name="" id="pequeno" value="pequeno">Pequeno
+      </label>
+      <label >
+        <input type="checkbox" name="" id="pequeno" value="medio">Médio
+    </label>
+    <label>
+      <input type="checkbox" name="" id="pequeno" value="grande">Grande
+    </label>
+    </div>
+  </form>
+  <section>
+    <ul>
+      <li class="cardPokemon" *ngFor="let pokemon of filteredPokemon()" (click)="showDetails(pokemon)">
+        <img class="photoPokemon" src="{{pokemon.photo}}" alt="">
+        <h2>{{ pokemon.name }}</h2>
+        <p class="{{type}}" *ngFor="let type of pokemon.type">{{type}}</p>
+      </li>
+  </ul>
+  </section>
+  </main>
+  <div *ngIf="selectedPokemon" class="modal">
+    <div class="content-container">
+      <h2>{{ selectedPokemon.name }}</h2>
+      <p> {{ selectedPokemon.description }}</p>
+      <button (click)="closeModal()">Fechar</button>
+    </div>
+  </div>
