@@ -16,6 +16,7 @@ export class AppComponent {
     new Pokemon(2, 'Bulbasaur', ['Grama', 'Veneno'], 'Esse é o Bulbasaur','../assets/bulbasaur.png'),
     new Pokemon(1, 'Charmander', ['Fogo'], 'Esse é o Ivysaur','../assets/charmander.webp'),
     new Pokemon(2, 'Geodude', ['Pedra'], 'Esse é o Geodude','../assets/Geodude.png'),
+    new Pokemon(1, 'Wartortle', ['Água'], 'Esse é o Wartortle', '')
   ];
   selectedPokemon?: Pokemon;
 
